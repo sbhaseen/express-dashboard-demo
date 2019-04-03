@@ -8,8 +8,8 @@ var ProcessInstance = require('../models/processinstance');
 
 var async = require('async');
 
-exports.index = function(req, res) {   
-    
+exports.index = function(req, res) {
+   
     async.parallel({
         process_count: function(callback) {
             Process.countDocuments({}, callback);
@@ -27,13 +27,13 @@ exports.index = function(req, res) {
             ProcessInstance.countDocuments({status:'Finished'}, callback);
         },
         process_category_primary_count: function(callback) {
-            Process.countDocuments({category: '5c9d48508ee1353a2786c7d0'},callback);
+            Process.countDocuments({category: '5ca510c87cf5db0017a59d5d'},callback);
         },
         process_category_intermediate_count: function(callback) {
-            Process.countDocuments({category: '5c9d48858ee1353a2786c7d1'},callback);
+            Process.countDocuments({category: '5ca510f57cf5db0017a59d5e'},callback);
         },
         process_category_finishing_count: function(callback) {
-            Process.countDocuments({category: '5c9d48998ee1353a2786c7d2'},callback);
+            Process.countDocuments({category: '5ca511017cf5db0017a59d5f'},callback);
         },
         machine_count: function(callback) {
             Machine.countDocuments({}, callback);

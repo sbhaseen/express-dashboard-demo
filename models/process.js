@@ -19,12 +19,5 @@ ProcessSchema
   return '/dashboard/process/' + this._id;
 });
 
-ProcessSchema.virtual('catCount', {
-  ref: 'Category',
-  localField: '_id',
-  foreignField: 'category',
-  count: true // Set `count: true` on the virtual
-});
-
 //Export model
 module.exports = mongoose.model('Process', ProcessSchema);
