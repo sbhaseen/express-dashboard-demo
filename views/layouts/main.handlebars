@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{title}}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+
+    <!-- Chart JS -->
+    <script src="/javascripts/chart.js"></script>
+
+</head>
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+
+    <div class="bg-light border-right sidebar" id="sidebar-wrapper">
+      <div class="sidebar-heading">Dashboard Menu</div>
+
+        <div class="list-group list-group-flush">
+          <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard">
+                  <span data-feather="home"></span>
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/dashboard/processes">
+                <span data-feather="grid"></span>
+                All Processes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard/machines">
+                <span data-feather="hard-drive"></span>
+                All Machines
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard/categories">
+                <span data-feather="layers"></span>
+                All categories
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard/processinstances">
+                <span data-feather="list"></span>
+                All process-instances
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="container">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Add Content
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/dashboard/machine/create">Create new machine</a>
+              <a class="dropdown-item" href="/dashboard/category/create">Create new category</a>
+              <a class="dropdown-item" href="/dashboard/process/create">Create new process</a>
+              <a class="dropdown-item" href="/dashboard/processinstance/create">Create new process instance</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <button class="btn btn-outline-primary" id="menu-toggle"><span data-feather="layout"></span></button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Home</a>
+            </li>
+          </ul>
+          <form class="form-inline mt-2 mt-md-0" method="GET" action="/dashboard/search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search" name="qs">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        {{{body}}}
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+
+    <!-- Bootstrap JS, jQuery and Popper -->
+    <script src="/javascripts/jquery-3.3.1.slim.min.js"></script>
+    <script src="/javascripts/popper.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    
+    <!-- Data-feather CDN -->
+    <script src="/javascripts/feather.min.js"></script>
+
+    <!-- Additional JS -->
+    <script src="/javascripts/dashboard.js"></script>
+</body>
+</html>

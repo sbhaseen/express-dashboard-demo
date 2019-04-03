@@ -1,0 +1,33 @@
+<h1>{{title}}: {{process.name}}</h1>
+<p><strong>Machine: </strong><a href={{process.machine.url}}>{{process.machine.name}}</a></p>
+<p><strong>Summary: </strong>{{process.summary}}</p>
+<p><strong>Serial Number: </strong>{{process.serial_number}}</p>
+&nbsp;
+<p><strong>Category: </strong>
+    {{#each process.category}}
+      <a href={{this.url}}>{{this.name}}</a>{{#unless @last}}, {{/unless}}
+    {{/each}}
+</p>
+<div style="margin-left:20px;margin-top:20px">
+  <h4>Instances</h4>
+  {{#each process_instances}}
+    <hr>
+    {{#if (isScheduled this.status)}}
+      <p class="text-warning">{{this.status}}</p></li>
+    {{else if (isStarted this.status)}}
+      <p class="text-danger">{{this.status}}</p></li>
+    {{else}}
+      <p class="text-success ">{{this.status}}</p></li>
+    {{/if}}
+      <p><strong>Operator: </strong>{{this.operator}}</p>
+    {{#unless (isScheduled this.status)}}
+      <p><strong>Scheduled end: </strong>{{this.scheduled_end_formatted}}</p>
+    {{/unless}}
+    <p><strong>ID:</strong><a href={{this.url}}>{{this._id}}</a></p>
+  {{else}}
+    <p>There are no instances of this process.</p>
+  {{/each}}
+</div>
+<hr>
+<p><a href="{{process.url}}/delete">Delete process</a></p>
+<p><a href="{{process.url}}/update">Update process</a></p>

@@ -1,0 +1,50 @@
+<h1>{{title}}</h1>
+
+<form method="POST" action="">
+  <div class="form-group">
+    <label for="process">Process: </label>
+    <select class="form-control" id="process" name="process" placeholder="Select process" required="true">
+      {{#if processinstance}}
+        {{#each process_list}}
+          <option value={{this._id}} {{isSelected this._id ../processinstance.process._id}}>{{this.name}}</option>
+        {{/each}}
+      {{else}}
+        {{#each process_list}}
+          <option value={{this._id}}>{{this.name}}</option>
+        {{/each}}
+      {{/if}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="operator">Operator: </label>
+    <input class="form-control" id="operator" name="operator" type="text" placeholder="Operator ID" required="true" value={{processinstance.operator}}>
+  </div>
+  <div class="form-group">
+    <label for="scheduled_end">Date when process ends: </label>
+    <input class="form-control" id="scheduled_end" name="scheduled_end" type="date" value="{{processinstance.scheduled_end_yyyy_mm_dd}}">
+  </div>
+  <div class="form-group">
+    <label for="status">Status: </label>
+    <select class="form-control" id="status" name="status" placeholder="Select status" required="true">
+      {{#if processinstance}}
+        <option value="Started" {{isSelected processinstance.status 'Started'}} >Started</option>
+        <option value="Scheduled" {{isSelected processinstance.status 'Scheduled'}}>Scheduled</option>
+        <option value="Finished" {{isSelected processinstance.status 'Finished'}}>Finished</option>
+      {{else}}
+        <option value="Started">Started</option>
+        <option value="Scheduled">Scheduled</option>
+        <option value="Finished">Finished</option>
+      {{/if}}
+    </select>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{{#if errors}}
+<label>Errors:</label>
+  <ul>
+    {{#each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

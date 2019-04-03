@@ -1,0 +1,23 @@
+<h1>{{title}}</h1>
+
+<form method="POST" action="">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input class="form-control" id="name" type="text" placeholder="Machine name" name="name" required="true" value={{machine.name}}>
+  </div>
+  <div class="form-group">
+    <label for="date_of_commissioning">Date of commissioning:</label>
+    <input class="form-control" id="date_of_commissioning" type="date" name="date_of_commissioning" value="{{machine.date_of_commissioning_yyyy_mm_dd}}">
+    <label for="date_of_retirement">Date of date_of_retirement:</label>
+    <input class="form-control" id="date_of_retirement" type="date" name="date_of_retirement" value="{{machine.date_of_retirement_yyyy_mm_dd}}">
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{{#if errors}}
+<lable>Errors:</lable>
+  <ul>
+    {{#each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

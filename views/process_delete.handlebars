@@ -1,0 +1,41 @@
+<h1>{{title}}: {{process.name}}</h1>
+<p><strong>Machine: </strong><a href={{process.machine.url}}>{{process.machine.name}}</a></p>
+<p><strong>Summary: </strong>{{process.summary}}</p>
+<p><strong>Serial Number: </strong>{{process.serial_number}}</p>
+&nbsp;
+<p><strong>Category: </strong>
+    {{#each process.category}}
+      <a href={{this.url}}>{{this.name}}</a>{{#unless @last}}, {{/unless}}
+    {{/each}}
+</p>
+<hr>
+{{#if process_instances.length}}
+  <p><strong>Delete the following copies before attempting to delete this Book.</strong></p>
+  <div style="margin-left: 20px; margin-top: 20px">
+    <h4>Instances</h4>
+    <dl>
+      {{#each process_instances}}
+        <hr>
+        {{#if (isScheduled this.status)}}
+          <p class="text-warning">{{this.status}}</p></li>
+        {{else if (isStarted this.status)}}
+          <p class="text-danger">{{this.status}}</p></li>
+        {{else}}
+          <p class="text-success">{{this.status}}</p></li>
+        {{/if}}
+          <p><strong>Operator: </strong>{{this.operator}}</p>
+        {{#unless (isScheduled this.status)}}
+          <p><strong>Scheduled End: </strong>{{this.due_back_formatted}}</p>
+        {{/unless}}
+          <p><strong>ID:</strong><a href={{this.url}}>{{this._id}}</a></p>
+      {{/each}}
+{{else}}
+  <p>Do you really want to delete this process?</p>
+  <form method="POST" action="">
+    <div class="form-group">
+      <input id="id" class="form-control" type="hidden" name="id" required="true" value={{process._id}}>
+    </div>
+    <button class="btn btn-danger" type="submit">Delete</button>
+  </form>
+  </div>
+{{/if}}

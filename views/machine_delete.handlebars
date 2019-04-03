@@ -1,0 +1,25 @@
+<h1>{{title}}: {{machine.name}}</h1>
+<p>{{machine.lifespan}}</p>
+
+{{#if machine_processs.length}}
+  <p><strong>Delete the following processs before attempting to delete this machine.</strong></p>
+  <div style="margin-left: 20px; margin-top: 20px">
+    <h4>Processes</h4>
+    <dl>
+      {{#each machine_processs}}
+      <dt>
+        <a href={{this.url}}>{{this.name}}</a>
+        <dd>{{this.summary}}</dd>
+      </dt>
+      {{/each}}
+    </dl>
+{{else}}
+  <p>Do you really want to delete this machine?</p>
+  <form method="POST" action="">
+    <div class="form-group">
+      <input id="machineid" class="form-control" type="hidden" name="machineid" required="true" value={{machine._id}}>
+    </div>
+    <button class="btn btn-danger" type="submit">Delete</button>
+  </form>
+  </div>
+{{/if}}

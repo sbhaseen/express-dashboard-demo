@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+
+<ul>
+  {{#each list_categories}}
+    <li><a href={{this.url}}>{{this.name}}</a></li>
+  {{else}}
+    <li>There are no categories.</li>
+  {{/each}}
+</ul>

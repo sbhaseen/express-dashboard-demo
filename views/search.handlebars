@@ -1,0 +1,34 @@
+<h1>{{title}}</h1>
+
+{{#if data}}
+
+  <h3>Process Matches</h3>
+  <ul>
+    {{#each data.process_qs}}
+      <li><a href={{this.url}}>{{this.name}}</a> ({{this.machine.name}})</li>
+    {{else}}
+      <li>There are no matching processes.</li>
+    {{/each}}
+  </ul>
+
+  <h3>Category Matches</h3>
+  <ul>
+    {{#each data.category_qs}}
+      <li><a href={{this.url}}>{{this.name}}</a></li>
+    {{else}}
+      <li>There are no matching categories.</li>
+    {{/each}}
+  </ul>
+
+  <h3>Machine Matches</h3>
+  <ul>
+    {{#each data.machine_qs}}
+      <li><a href={{this.url}}>{{this.name}}</a></li>
+    {{else}}
+      <li>There are no matching categories.</li>
+    {{/each}}
+  </ul>
+
+{{else}}
+  <p>No results to display.</p>
+{{/if}}

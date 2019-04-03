@@ -1,0 +1,98 @@
+<div class="jumbotron text-center">
+  <h1>{{title}}</h1>
+  <p>Welcome to a Manufacturing Dashboard demo, a basic Express website with stored data in MongoDB.</p>
+  <P><small><em>Created by Shan at iSquare Logix.</em></small></p>
+</div>
+
+<h2 class="text-center">Metrics</h2>
+
+<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+  <div class="row">
+    <div class="col-md-6">
+      <canvas id="processInstanceChart"></canvas>
+      <script>
+        var ctx = document.getElementById('processInstanceChart');
+        var process_started = {{data.process_instance_started_count}};
+        var process_scheduled = {{data.process_instance_scheduled_count}};
+        var process_finished = {{data.process_instance_finished_count}};
+
+        var processInstanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Started', 'Scheduled', 'Finished'],
+                datasets: [{
+                    label: '# of Process Instances',
+                    data: [process_started, process_scheduled, process_finished],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Process Instance Status'
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+        });
+      </script>
+    </div>
+    <div class="col-md-6">
+      <canvas id="processCategory"></canvas>
+      <script>
+        var ctx = document.getElementById('processCategory');
+        var category_primary = {{data.process_category_primary_count}};
+        var category_intermediate = {{data.process_category_intermediate_count}};
+        var category_finishing = {{data.process_category_finishing_count}};
+
+        var processCategory = new Chart(ctx, {
+          type:'polarArea',
+          data:{labels:['Primary', 'Intermediate', 'Finishing'],
+                datasets:[{label:'Category Counts',
+                           data:[category_primary, category_intermediate, category_finishing],
+                           backgroundColor:['rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)']
+                }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Process per Category'
+            }
+          }
+        });
+      </script>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+{{#if error}}
+  <p>Error getting dynamic content.</p>
+{{else}}
+  <p>The dashboard has the following record counts:</p>
+  <ul>
+    <li>Processes: {{data.process_count}}</li>
+    <li>Process Instances started: {{data.process_instance_started_count}}</li>
+    <li>Process Instances scheduled: {{data.process_instance_scheduled_count}}</li>
+    <li>Machines: {{data.machine_count}}</li>
+    <li>Categories: {{data.category_count}}</li>
+  </ul>
+{{/if}}

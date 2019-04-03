@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+
+<ul>
+  {{#each process_list}}
+    <li><a href={{this.url}}>{{this.name}}</a> ({{this.machine.name}})</li>
+  {{else}}
+    <li>There are no processs</li>
+  {{/each}}
+</ul>

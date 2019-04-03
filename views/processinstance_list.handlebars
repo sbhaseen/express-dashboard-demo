@@ -1,0 +1,18 @@
+<h1>{{title}}</h1>
+
+<ul>
+  {{#each processinstance_list}}
+    <li><a href={{this.url}}>{{this.process.name}} : {{this.operator}}</a> - 
+
+    {{#if (isScheduled this.status)}}
+      <span class="text-warning">{{this.status}}</span></li>
+    {{else if (isStarted this.status)}}
+      <span class="text-danger">{{this.status}}</span></li>
+    {{else}}
+      <span class="text-success ">End: {{this.scheduled_end_formatted}}</span></li>
+    {{/if}}
+
+  {{else}}
+    <li>There are no processes</li>
+  {{/each}}
+</ul>

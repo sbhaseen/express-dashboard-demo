@@ -1,0 +1,53 @@
+<h1>{{title}}</h1>
+
+<form method="POST" action="">
+  <div class="form-group">
+    <label for="name">Name: </label>
+    <input class="form-control" id="name" type="text" placeholder="Name of process" name="name" required="true" value="{{process.name}}">
+  </div>
+  <div class="form-group">
+    <label for="machine">Machine: </label>
+    <select class="form-control" id="machine" name="machine" placeholder="Select machine" required="true">
+      {{#if process}}
+        {{#each machines}}
+          <option value={{this._id}} {{isSelected this._id ../process.machine._id}}>{{this.name}}</option>
+        {{/each}}
+      {{else}}
+        {{#each machines}}
+          <option value={{this._id}}>{{this.name}}</option>
+        {{/each}}
+      {{/if}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="summary">Summary: </label>
+    <textarea class="form-control" id="summary" placeholder='Summary' name='summary' required="true" rows="5">{{process.summary}}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="serial_number">Serial Number: </label>
+    <input class="form-control" id="serial_number" name="serial_number" type="text" placeholder="Serial Number" value="{{process.serial_number}}" required="true">
+  </div>
+  <div class="form-group">
+    <label>Category: </label>
+    <div>
+      {{#each categories}}
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="category" id={{this._id}} value={{this._id}} {{this.checked}}>
+          <label class="form-check-label" for={{this._id}}>
+            {{this.name}}
+          </label>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{{#if errors}}
+<label>Errors:</label>
+  <ul>
+    {{#each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

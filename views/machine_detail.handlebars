@@ -1,0 +1,21 @@
+<h1>Machine: {{machine.name}}</h1>
+<p>{{machine.lifespan}}</p>
+
+<div style="margin-left: 20px; margin-top: 20px">
+  <h4>Processes </h4>
+  <dl>
+    {{#each machine_processes}}
+    <dt>
+      <a href={{this.url}}>{{this.name}}</a>
+      <dd>
+        {{this.summary}}
+      </dd>
+    </dt>
+    {{else}}
+      <p>This machine has no processs.</p>
+    {{/each}}
+  </dl>
+</div>
+<hr>
+<p><a href="{{machine.url}}/delete">Delete machine</a></p>
+<p><a href="{{machine.url}}/update">Update machine</a></p>

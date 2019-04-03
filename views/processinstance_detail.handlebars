@@ -1,0 +1,20 @@
+<h1>ID: {{processinstance._id}}</h1>
+<p><strong>Name: </strong><a href={{processinstance.process.url}}>{{processinstance.process.name}}</a></p>
+<p><strong>Operator: </strong>{{processinstance.operator}}</p>
+
+<p><strong>Status: </strong>
+  {{#if (isScheduled processinstance.status)}}
+    <span class="text-warning">{{processinstance.status}}</span>
+  {{else if (isStarted processinstance.status)}}
+    <span class="text-danger">{{processinstance.status}}</span>
+  {{else}}
+    <span class="text-success">{{processinstance.status}}</span>
+  {{/if}}
+</p>
+  {{#unless (isStarted processinstance.status)}}
+      <p><strong>End: </strong>{{processinstance.scheduled_end_formatted}}</p>
+  {{/unless}}
+
+<hr>
+<p><a href="{{processinstance.url}}/delete">Delete Process Instance</a></p>
+<p><a href="{{processinstance.url}}/update">Update Process Instance</a></p>
