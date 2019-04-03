@@ -17,7 +17,8 @@ var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://localhost:27017/mfgdashboard';
+var devDB = 'mongodb://localhost:27017/mfgdashboard';
+var mongoDB = process.env.MONGODB_URI || devDB;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
