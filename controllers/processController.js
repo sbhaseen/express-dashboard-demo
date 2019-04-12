@@ -9,6 +9,7 @@ var ProcessInstance = require('../models/processinstance');
 var async = require('async');
 
 exports.index = function(req, res) {
+
    
     async.parallel({
         process_count: function(callback) {
@@ -27,21 +28,58 @@ exports.index = function(req, res) {
             ProcessInstance.countDocuments({status:'Finished'}, callback);
         },
         process_category_primary_count: function(callback) {
-            Process.countDocuments({category: '5ca510c87cf5db0017a59d5d'},callback);
+            Process.aggregate([
+                {
+                  $lookup: {
+                    from: 'categories',
+                    localField: 'category',
+                    foreignField: '_id',
+                    as: 'category_id'
+                  }
+                },
+                { $unwind: '$category_id' },
+                { $match: { 'category_id.name': 'Primary' } },
+                { $group: { _id: null, count: { $sum: 1 } } },
+              ], callback);
         },
         process_category_intermediate_count: function(callback) {
-            Process.countDocuments({category: '5ca510f57cf5db0017a59d5e'},callback);
+            Process.aggregate([
+                {
+                  $lookup: {
+                    from: 'categories',
+                    localField: 'category',
+                    foreignField: '_id',
+                    as: 'category_id'
+                  }
+                },
+                { $unwind: '$category_id' },
+                { $match: { 'category_id.name': 'Intermediate' } },
+                { $group: { _id: null, count: { $sum: 1 } } },
+              ], callback);
         },
         process_category_finishing_count: function(callback) {
-            Process.countDocuments({category: '5ca511017cf5db0017a59d5f'},callback);
+            Process.aggregate([
+                {
+                  $lookup: {
+                    from: 'categories',
+                    localField: 'category',
+                    foreignField: '_id',
+                    as: 'category_id'
+                  }
+                },
+                { $unwind: '$category_id' },
+                { $match: { 'category_id.name': 'Finishing' } },
+                { $group: { _id: null, count: { $sum: 1 } } },
+              ], callback);
         },
         machine_count: function(callback) {
             Machine.countDocuments({}, callback);
         },
         category_count: function(callback) {
             Category.countDocuments({}, callback);
-        }
+        },
     }, function(err, results) {
+        console.log(results.process_category_finishing_count[0].count)
         res.render('index', { title: 'Dashboard Home',
                               error: err,
                               data: results });
