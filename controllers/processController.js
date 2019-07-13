@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+const { body, validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
 
 var Process = require('../models/process');
 var Machine = require('../models/machine');
@@ -79,7 +79,6 @@ exports.index = function(req, res) {
             Category.countDocuments({}, callback);
         },
     }, function(err, results) {
-        console.log(results.process_category_finishing_count[0].count)
         res.render('index', { title: 'Dashboard Home',
                               error: err,
                               data: results });

@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+const { body, validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
 
 var Machine = require('../models/machine');
 

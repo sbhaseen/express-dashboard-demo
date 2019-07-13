@@ -41,8 +41,6 @@ var hbs = exphbs.create({
       }
     },
     isSelected: function (firstId, secondId) {
-      // console.log("First ID: " + firstId);
-      // console.log("Second ID: " + secondId);
       if(firstId.toString()==secondId) {
         return " selected";
       } else {
