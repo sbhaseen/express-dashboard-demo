@@ -1,50 +1,38 @@
-var createError = require('http-errors');
-var express = require('express');
-var exphbs  = require('express-handlebars');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var compression = require('compression');
-var helmet = require('helmet');
+const createError = require('http-errors');
+const express = require('express');
+const exphbs = require('express-handlebars');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const compression = require('compression');
+const helmet = require('helmet');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var dashboardRouter = require('./routes/dashboard');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const dashboardRouter = require('./routes/dashboard');
 
-var app = express();
-
-//Set up mongoose connection
-var mongoose = require('mongoose');
-var devDB = 'mongodb://localhost:27017/mfgdashboard';
-var mongoDB = process.env.MONGODB_URI || devDB;
-mongoose.connect(mongoDB, { useNewUrlParser: true });
-mongoose.Promise = global.Promise;
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
+const app = express();
 
 //Setup Handlebars instance helpers
-var hbs = exphbs.create({
+const hbs = exphbs.create({
   defaultLayout: 'main',
   // Specify helpers which are only registered on this instance.
   helpers: {
-    isScheduled: function (a) { 
-      if(a==='Scheduled') {
-          return true;
+    isScheduled: function(a) {
+      if (a === 'Scheduled') {
+        return true;
       }
     },
-    isStarted: function (m) { 
-      if(m==='Started') {
-          return true;
+    isStarted: function(m) {
+      if (m === 'Started') {
+        return true;
       }
     },
-    isSelected: function (firstId, secondId) {
-      if(firstId.toString()==secondId) {
-        return " selected";
+    isSelected: function(firstId, secondId) {
+      if (firstId.toString() == secondId) {
+        return ' selected';
       } else {
-        return "";
+        return '';
       }
     }
   }

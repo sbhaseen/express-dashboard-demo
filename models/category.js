@@ -1,16 +1,14 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var CategorySchema = new Schema({
-    name: {type: String, required: true, min: 3, max: 100}
+const CategorySchema = new Schema({
+  name: { type: String, required: true, min: 3, max: 100 }
 });
 
 // Virtual for this category instance URL.
-CategorySchema
-.virtual('url')
-.get(function () {
-  return '/dashboard/category/'+this._id;
+CategorySchema.virtual('url').get(function() {
+  return '/dashboard/category/' + this._id;
 });
 
 // Export model.

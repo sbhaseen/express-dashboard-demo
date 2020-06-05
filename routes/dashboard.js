@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 // Require controller modules.
-var process_controller = require('../controllers/processController');
-var machine_controller = require('../controllers/machineController');
-var category_controller = require('../controllers/categoryController');
-var process_instance_controller = require('../controllers/processinstanceController');
-var search_controller = require('../controllers/searchController');
+const process_controller = require('../controllers/processController');
+const machine_controller = require('../controllers/machineController');
+const category_controller = require('../controllers/categoryController');
+const process_instance_controller = require('../controllers/processinstanceController');
+const search_controller = require('../controllers/searchController');
 
 /// Routes ///
 
@@ -92,28 +92,52 @@ router.get('/categories', category_controller.category_list);
 /// Process Instance Routes ///
 
 // GET request for creating a process instance. NOTE This must come before route that displays BookInstance (uses id).
-router.get('/processinstance/create', process_instance_controller.processinstance_create_get);
+router.get(
+  '/processinstance/create',
+  process_instance_controller.processinstance_create_get
+);
 
-// POST request for creating a process instance. 
-router.post('/processinstance/create', process_instance_controller.processinstance_create_post);
+// POST request for creating a process instance.
+router.post(
+  '/processinstance/create',
+  process_instance_controller.processinstance_create_post
+);
 
 // GET request to delete a process instance.
-router.get('/processinstance/:id/delete', process_instance_controller.processinstance_delete_get);
+router.get(
+  '/processinstance/:id/delete',
+  process_instance_controller.processinstance_delete_get
+);
 
 // POST request to delete a process instance.
-router.post('/processinstance/:id/delete', process_instance_controller.processinstance_delete_post);
+router.post(
+  '/processinstance/:id/delete',
+  process_instance_controller.processinstance_delete_post
+);
 
 // GET request to update a process isntance.
-router.get('/processinstance/:id/update', process_instance_controller.processinstance_update_get);
+router.get(
+  '/processinstance/:id/update',
+  process_instance_controller.processinstance_update_get
+);
 
 // POST request to update a process instance.
-router.post('/processinstance/:id/update', process_instance_controller.processinstance_update_post);
+router.post(
+  '/processinstance/:id/update',
+  process_instance_controller.processinstance_update_post
+);
 
 // GET request for one process instance.
-router.get('/processinstance/:id', process_instance_controller.processinstance_detail);
+router.get(
+  '/processinstance/:id',
+  process_instance_controller.processinstance_detail
+);
 
 // GET request for list of all process isntances.
-router.get('/processinstances', process_instance_controller.processinstance_list);
+router.get(
+  '/processinstances',
+  process_instance_controller.processinstance_list
+);
 
 /// Search Route ///
 

@@ -1,7 +1,7 @@
 <div class="jumbotron text-center">
   <h1>{{title}}</h1>
   <p>Welcome to a Manufacturing Dashboard demo, a basic Express website with stored data in MongoDB.</p>
-  <P><small><em>Created by Shan at iSquare Logix.</em></small></p>
+  <P><small><em>Created by Shan. See the code on <a href="https://github.com/sbhaseen/express-dashboard-demo">GitHub</a>.</em></small></p>
 </div>
 
 <h2 class="text-center">Metrics</h2>
@@ -11,12 +11,12 @@
     <div class="col-md-6">
       <canvas id="processInstanceChart"></canvas>
       <script>
-        var ctx = document.getElementById('processInstanceChart');
-        var process_started = {{data.process_instance_started_count}};
-        var process_scheduled = {{data.process_instance_scheduled_count}};
-        var process_finished = {{data.process_instance_finished_count}};
+        const ctx = document.getElementById('processInstanceChart');
+        const process_started = {{data.process_instance_started_count}};
+        const process_scheduled = {{data.process_instance_scheduled_count}};
+        const process_finished = {{data.process_instance_finished_count}};
 
-        var processInstanceChart = new Chart(ctx, {
+        const processInstanceChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Started', 'Scheduled', 'Finished'],
@@ -55,12 +55,12 @@
     <div class="col-md-6">
       <canvas id="processCategory"></canvas>
       <script>
-        var ctx = document.getElementById('processCategory');
-        var category_primary = {{#each data.process_category_primary_count}}{{this.count}}{{/each}};
-        var category_intermediate = {{#each data.process_category_intermediate_count}}{{this.count}}{{/each}};
-        var category_finishing = {{#each data.process_category_finishing_count}}{{this.count}}{{/each}};
+        const ctx = document.getElementById('processCategory');
+        const category_primary = {{#each data.process_category_primary_count}}{{this.count}}{{/each}};
+        const category_intermediate = {{#each data.process_category_intermediate_count}}{{this.count}}{{/each}};
+        const category_finishing = {{#each data.process_category_finishing_count}}{{this.count}}{{/each}};
 
-        var processCategory = new Chart(ctx, {
+        const processCategory = new Chart(ctx, {
           type:'polarArea',
           data:{labels:['Primary', 'Intermediate', 'Finishing'],
                 datasets:[{label:'Category Counts',
