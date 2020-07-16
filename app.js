@@ -8,7 +8,6 @@ const compression = require('compression');
 const helmet = require('helmet');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const dashboardRouter = require('./routes/dashboard');
 
 const app = express();
@@ -18,28 +17,26 @@ const hbs = exphbs.create({
   defaultLayout: 'main',
   // Specify helpers which are only registered on this instance.
   helpers: {
-    isScheduled: function(a) {
+    isScheduled: function (a) {
       if (a === 'Scheduled') {
         return true;
       }
     },
-    isStarted: function(m) {
+    isStarted: function (m) {
       if (m === 'Started') {
         return true;
       }
     },
-    isSelected: function(firstId, secondId) {
+    isSelected: function (firstId, secondId) {
       if (firstId.toString() == secondId) {
         return ' selected';
       } else {
         return '';
       }
-    }
-  }
+    },
+  },
 });
 
-// view engine setup
-// app.engine('handlebars', exphbs({defaultLayout: 'main'})); // Default handlebars engine
 app.engine('handlebars', hbs.engine); //Handlebars engine with custom helpers
 app.set('view engine', 'handlebars');
 
@@ -51,19 +48,17 @@ app.use(cookieParser());
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Endpoints
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/dashboard', dashboardRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
