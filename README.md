@@ -4,7 +4,7 @@ This is a basic Express website with stored data in MongoDB. It was developed to
 
 The model logic is developed as shown in this UML diagram.
 
-![UML Logic Diagram](public/images/ProductionModels-Manufacturing.png)
+![UML Logic Diagram](docs/ProductionModels-Manufacturing.png)
 
 ## Getting Started
 
