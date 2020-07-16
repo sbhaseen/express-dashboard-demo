@@ -52,6 +52,28 @@ The primary endpoints are defined in `app.js`. Implementation details are locate
 
   - This endpoint handles serving the main page and realted dashboard views.
 
+Some screenshots of the running app:
+
+Main Page on Desktop:
+
+![Main page on desktop](docs/Dashboard_Home_Desktop.png)
+
+Main Page on Mobile:
+
+<img src="docs/Dashboard_Home_Mobile.png" width="360px" />
+
+A typical form (Create a new process):
+
+![create a process form](docs/Create_Process_Form.png)
+
+A dropdown to add content:
+
+![A dropdown menu image](docs/Machine_List_Add_Content.png)
+
+A very reudimentary search:
+
+![A search result page](docs/Search_Results.png)
+
 ## Built With
 
 - [Express.js](https://expressjs.com/) - A Node.js web application framework
@@ -59,6 +81,7 @@ The primary endpoints are defined in `app.js`. Implementation details are locate
 - [Mongoose](https://mongoosejs.com/) - MongoDB Object Document Mapper
 - [(Express) Handlebars](https://handlebarsjs.com/) - A minimal views templating engine.
 - [Helmet.js](https://helmetjs.github.io/) - Helmet helps you secure your Express apps by setting various HTTP headers.
+- [Bootstrap (front-end library)](https://getbootstrap.com/) - Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
 
 ## License
 

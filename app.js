@@ -35,6 +35,10 @@ const hbs = exphbs.create({
       }
     },
   },
+  runtimeOptions: {
+    allowProtoMethodsByDefault: true,
+    allowProtoPropertiesByDefault: true,
+  },
 });
 
 app.engine('handlebars', hbs.engine); //Handlebars engine with custom helpers
