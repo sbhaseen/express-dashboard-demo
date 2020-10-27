@@ -12,9 +12,9 @@
       <canvas id="processInstanceChart"></canvas>
       <script>
         const ctx = document.getElementById('processInstanceChart');
-        const process_started = {{data.process_instance_started_count}};
-        const process_scheduled = {{data.process_instance_scheduled_count}};
-        const process_finished = {{data.process_instance_finished_count}};
+        const process_started = {{data.process_instance_started_count}} || 0;
+        const process_scheduled = {{data.process_instance_scheduled_count}} || 0;
+        const process_finished = {{data.process_instance_finished_count}} || 0;
 
         const processInstanceChart = new Chart(ctx, {
             type: 'bar',
