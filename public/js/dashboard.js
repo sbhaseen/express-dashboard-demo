@@ -3,7 +3,7 @@ const navSelector = document.querySelector(`.nav > li > a[href="${pathname}"]`);
 const menuToggleIcon = document.getElementById("menu-toggle");
 const wrapperElement = document.getElementById("wrapper");
 
-// Replace feather class class in HTML
+// Replace feather class in HTML
 feather.replace();
 
 // Highlight Current Page
