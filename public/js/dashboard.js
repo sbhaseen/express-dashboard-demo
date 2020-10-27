@@ -1,17 +1,16 @@
-(function () {
-    'use strict'
+const pathname = window.location.pathname;
+const navSelector = document.querySelector(`.nav > li > a[href="${pathname}"]`);
+const menuToggleIcon = document.getElementById("menu-toggle");
+const wrapperElement = document.getElementById("wrapper");
 
-    // Replace feather class calls in HTML
-    feather.replace()
+// Replace feather class class in HTML
+feather.replace();
 
-    // Hilight current page in dashboard menu
-    var pathname = window.location.pathname;
-    $('.nav > li > a[href="'+pathname+'"]').addClass('active'); // Add .parent() for one level higher
+// Highlight Current Page
+navSelector.classList.add("active");
 
-    // Toggle button for sidebar
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  
-  }())
+// Toggle the display of the sidebar with a menu
+menuToggleIcon.addEventListener("click", (e) => {
+  e.preventDefault();
+  wrapperElement.classList.toggle("toggled");
+});

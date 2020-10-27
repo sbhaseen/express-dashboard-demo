@@ -50,6 +50,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
+
+// Static files to serve
 app.use(
   "/jquery",
   express.static(path.join(__dirname, "/node_modules/jquery/dist"))
@@ -61,6 +63,10 @@ app.use(
 app.use(
   "/chart-js",
   express.static(path.join(__dirname, "/node_modules/chart.js/dist"))
+);
+app.use(
+  "/feather-icons",
+  express.static(path.join(__dirname, "/node_modules/feather-icons/dist"))
 );
 app.use(express.static(path.join(__dirname, "/public")));
 
