@@ -82,6 +82,7 @@ A very reudimentary search:
 - [(Express) Handlebars](https://handlebarsjs.com/) - A minimal views templating engine.
 - [Helmet.js](https://helmetjs.github.io/) - Helmet helps you secure your Express apps by setting various HTTP headers.
 - [Bootstrap (front-end library)](https://getbootstrap.com/) - Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
+- [Chart.js](https://www.chartjs.org/) - A JavaScript charting library.
 
 ## License
 
