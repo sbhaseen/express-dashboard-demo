@@ -10,7 +10,7 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "compression": "^1.7.4",
