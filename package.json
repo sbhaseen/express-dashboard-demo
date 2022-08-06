@@ -23,7 +23,7 @@
     "helmet": "^3.23.3",
     "http-errors": "^1.8.0",
     "jquery": "^3.5.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.9.24",
     "morgan": "^1.10.0"
   },
